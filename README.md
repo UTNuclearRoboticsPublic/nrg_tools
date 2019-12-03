@@ -13,20 +13,20 @@ Now you should be able to `#include "nrg_tools.h"` in your C++ file where you wa
 
 The `nrg_tools.h` file includes all of the tools in the library. To get only specific ones, you can include only those headers instead (e.g. `#include "conversions.hpp"`).
 
-The documentation for the library can be easily accessed by opening the `index.html` file in the `docs/html` folder, [here](www.google.com).
+The documentation for the library can be easily accessed by opening the `index.html` file in the `docs/html` folder, [here](https://github.com/UTNuclearRoboticsPublic/nrg_tools/tree/master/doc/html).
 
 ## Type Conversions
-The type conversions ([conversions.hpp](www.google.com)) allow you to easily convert between many ROS message types, `std::vector<double>`'s, and `Eigen::VectorXd`'s. To convert between any two types is simpily a call to `nrg_tools::convert(from_type, to_type)`. As an example:
+The type conversions ([conversions.hpp](https://github.com/UTNuclearRoboticsPublic/nrg_tools/blob/master/include/nrg_tools/conversions.hpp)) allow you to easily convert between many ROS message types, `std::vector<double>`, and `Eigen::VectorXd`. To convert between any two types is simpily a call to `nrg_tools::convert(from_type, to_type)`. As an example:
 ```
 std::vector<double> input{100, 200, 300, 400, 500, 600};
 geometry_msgs::WrenchStamped output;
 bool success = nrg_tools::convert(input, output);
 
 geometry_msgs::Wrench other_output;
-bool other_success = nrg_tools::convert(output, other_output);
+success = nrg_tools::convert(output, other_output);
 ```
 
-Adding new possible conversions to the library is as simple as writing 2 functions: the first to convert you new type to a `std::vector<double>` and the secont to convert a `std::vector<double>` to your new type. After doing this, `nrg_tools::convert()` will work on any other types with your new addition. This process is further documented in the actual header file.
+Adding new possible conversions to the library is as simple as writing 2 functions: the first to convert your new type to a `std::vector<double>` and the secont to convert a `std::vector<double>` to your new type. After doing this, `nrg_tools::convert()` will work on any other types with your new addition. This process is further documented in the actual header file.
 
 ## Low Pass Filters
 ### Standard Filters
