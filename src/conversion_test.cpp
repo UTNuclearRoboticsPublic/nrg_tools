@@ -52,6 +52,15 @@ int main(int argc, char **argv)
 	std::cout << "\nResult 4 (" << suc4 << "): " << res4.linear.x << " " << res4.linear.y << " " << res4.linear.z << " "
 			<< res4.angular.x << " " << res4.angular.y << " " << res4.angular.z << "\n";
 
+	tf2::Vector3 tf_test1(30, 31, 32);
+	tf2::Quaternion tf_test2(40,41,42,44);
+	geometry_msgs::Vector3 tf_res1;
+	geometry_msgs::Quaternion tf_res2;
+	nrg_tools::convert(tf_test1, tf_res1);
+	nrg_tools::convert(tf_test2, tf_res2);
+	std::cout << "\nResult 5: " << tf_res1;
+	std::cout << "\nResult 6: " << tf_res2;
+
 
 	std::vector<double> print1{1.1, 2.2, 3.3};
 	std::vector<int> print2{95, 96, 97, 98, 99};

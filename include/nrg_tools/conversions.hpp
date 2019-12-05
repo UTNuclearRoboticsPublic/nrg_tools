@@ -205,6 +205,28 @@ namespace nrg_conversions{
 	}
 
 	/**
+	 * Converts tf::Quaternion to std::vector<double>
+	 * @param input		A tf::Quaternion input
+	 * @return 			A std::vector<double> that matches the input
+	 */
+	const std::vector<double> toVec(const tf::Quaternion input)
+	{
+		std::vector<double> output{input[0], input[1], input[2], input[3]};
+		return output;
+	}
+
+	/**
+	 * Converts tf2::Quaternion to std::vector<double>
+	 * @param input		A tf2::Quaternion input
+	 * @return 			A std::vector<double> that matches the input
+	 */
+	const std::vector<double> toVec(const tf2::Quaternion input)
+	{
+		std::vector<double> output{input[0], input[1], input[2], input[3]};
+		return output;
+	}
+
+	/**
 	 * Converts geometry_msgs::QuaternionStamped to std::vector<double>
 	 * @param input		A geometry_msgs::QuaternionStamped input
 	 * @return 			A std::vector<double> that matches the input
@@ -269,6 +291,28 @@ namespace nrg_conversions{
 	{
 		const geometry_msgs::Twist twist = input.twist;
 		return toVec(twist);
+	}
+
+	/**
+	 * Converts tf::Vector3 to std::vector<double>
+	 * @param input		A tf::Vector3 input
+	 * @return 			A std::vector<double> that matches the input
+	 */
+	const std::vector<double> toVec(const tf::Vector3 input)
+	{
+		std::vector<double> output{input.getX(), input.getY(), input.getZ()};
+		return output;
+	}
+
+	/**
+	 * Converts tf2::Vector3 to std::vector<double>
+	 * @param input		A tf2::Vector3 input
+	 * @return 			A std::vector<double> that matches the input
+	 */
+	const std::vector<double> toVec(const tf2::Vector3 input)
+	{
+		std::vector<double> output{input.getX(), input.getY(), input.getZ()};
+		return output;
 	}
 
 	/**
@@ -545,6 +589,34 @@ namespace nrg_conversions{
 	}
 
 	/**
+	 * Converts a std::vector<double> into a tf::Quaternion
+	 * @param input		A std::vector<double> input
+	 * @param output	A tf::Quaternion that matches the input
+	 * @return 			Returns 'true' if the input is adequately sized, 'false' otherwise
+	 */
+	const bool fromVec(const std::vector<double>& input, tf::Quaternion& output)
+	{
+		if(input.size() != 4) return false;
+		tf::Quaternion quat(input[0], input[1], input[2], input[3]);
+		output = quat;
+		return true;
+	}
+
+	/**
+	 * Converts a std::vector<double> into a tf2::Quaternion
+	 * @param input		A std::vector<double> input
+	 * @param output	A tf2::Quaternion that matches the input
+	 * @return 			Returns 'true' if the input is adequately sized, 'false' otherwise
+	 */
+	const bool fromVec(const std::vector<double>& input, tf2::Quaternion& output)
+	{
+		if(input.size() != 4) return false;
+		tf2::Quaternion quat(input[0], input[1], input[2], input[3]);
+		output = quat;
+		return true;
+	}
+
+	/**
 	 * Converts a std::vector<double> into a geometry_msgs::QuaternionStamped
 	 * @param input		A std::vector<double> input
 	 * @param output	A geometry_msgs::QuaternionStamped that matches the input
@@ -626,6 +698,34 @@ namespace nrg_conversions{
 		output.twist = twist;
 		
 		return val;
+	}
+
+	/**
+	 * Converts a std::vector<double> into a tf::Vector3
+	 * @param input		A std::vector<double> input
+	 * @param output	A tf::Vector3 that matches the input
+	 * @return 			Returns 'true' if the input is adequately sized, 'false' otherwise
+	 */
+	const bool fromVec(const std::vector<double>& input, tf::Vector3& output)
+	{
+		if(input.size() != 3) return false;
+		tf::Vector3 vec(input[0], input[1], input[2]);
+		output = vec;
+		return true;
+	}
+
+	/**
+	 * Converts a std::vector<double> into a tf2::Vector3
+	 * @param input		A std::vector<double> input
+	 * @param output	A tf2::Vector3 that matches the input
+	 * @return 			Returns 'true' if the input is adequately sized, 'false' otherwise
+	 */
+	const bool fromVec(const std::vector<double>& input, tf2::Vector3& output)
+	{
+		if(input.size() != 3) return false;
+		tf2::Vector3 vec(input[0], input[1], input[2]);
+		output = vec;
+		return true;
 	}
 
 	/**

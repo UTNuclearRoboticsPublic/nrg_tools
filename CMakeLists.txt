@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   std_msgs
+  tf
+  tf2
 )
 find_package(Eigen3 REQUIRED)
 

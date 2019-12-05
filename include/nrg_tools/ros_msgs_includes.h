@@ -1,5 +1,6 @@
 #pragma once
 
+// ~~~~~~~~~~~~~~~ Geometry Msgs ~~~~~~~~~~~~~~~~~
 #include <geometry_msgs/Accel.h>
 #include <geometry_msgs/AccelStamped.h>
 
@@ -28,3 +29,8 @@
 
 #include <geometry_msgs/Wrench.h>
 #include <geometry_msgs/WrenchStamped.h>
+
+// ~~~~~~~~~~~~~~~ Tf Msgs ~~~~~~~~~~~~~~~~~
+#include <tf/transform_datatypes.h>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2/LinearMath/Vector3.h>
